@@ -1,5 +1,7 @@
 {
     "editor.codeActionsOnSave": {
         "source.fixAll": true
-      }
+      },
+    "tsImportSorter.configuration.hasSemicolon": false,
+    "tsImportSorter.configuration.trailingComma": "none",
 }
