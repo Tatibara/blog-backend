@@ -25,3 +25,49 @@ For the subscriptions this library uses [graphql-subscriptions](https://github.c
 To run the project execute `yarn start`
 
 The GraphQL Playground is running under `http://localhost:4000/`
+
+#### Subscription
+
+In order to distinguish between type of CRUD operations it is necessary to add mutation type field into response type.
+````bash
+enum MutationType {
+    CREATED
+    UPDATED
+    DELETED
+}
+````
+
+````bash
+type PostSubscriptionPayload {
+    mutation: MutationType!
+    data: Post!
+}
+````
+
+In GraphQL playground write 
+* subscription:
+````bash
+subscription {
+  comment(postId: "10") {
+    id
+    text
+    author{
+        name
+    }
+  }
+}
+````
+* mutation:
+````bash
+mutation {
+  createComment(data: {text: "my post3", author: "2", post: "10"}){
+    id 
+    author {
+      id
+    }
+    post {
+      id
+    }
+  }
+}
+````
